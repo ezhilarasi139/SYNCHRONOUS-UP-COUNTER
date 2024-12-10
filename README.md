@@ -8,8 +8,6 @@ To implement 4 bit synchronous up counter and validate functionality.
 
 Quartus prime
 
-**THEORY**
-
 **4 bit synchronous UP Counter**
 
 If we enable each J-K flip-flop to toggle based on whether or not all preceding flip-flop outputs (Q) are “high,” we can obtain the same counting sequence as the asynchronous circuit without the ripple effect, since each flip-flop in this circuit will be clocked at exactly the same time:
@@ -26,21 +24,29 @@ Since the first (LSB) flip-flop needs to toggle at every clock pulse, its J and 
 The next flip-flop need only “recognize” that the first flip-flop’s Q output is high to be made ready to toggle, so no AND gate is needed.
 However, the remaining flip-flops should be made ready to toggle only when all lower-order output bits are “high,” thus the need for AND gates.
 
-**Procedure**
-
-/* write all the steps invloved */
-
 **PROGRAM**
+```
+module ex11(out,clk,rst);
+input clk,rst;
+output reg [3:0]out;
+always @ (posedge clk)
+begin
+   if(rst)
+     out<=0;
+   else 
+     out <= out+1;
+end
+endmodule
+```
 
-/* Program for flipflops and verify its truth table in quartus using Verilog programming. 
-
-Developed by: RegisterNumber:
-*/
+Developed by: Ezhilarasi N RegisterNumber: 24901074
 
 **RTL LOGIC UP COUNTER**
+![Screenshot (44)](https://github.com/user-attachments/assets/5badfa01-50cb-4bfd-8d5c-6f45d47e3087)
+
 
 **TIMING DIAGRAM FOR IP COUNTER**
-
-**TRUTH TABLE**
+![Screenshot (45)](https://github.com/user-attachments/assets/9e9a2df7-cc7d-4a24-b7fa-f5de37b044a7)
 
 **RESULTS**
+ 4 bit synchronous up counter and validate functionality is verified.
